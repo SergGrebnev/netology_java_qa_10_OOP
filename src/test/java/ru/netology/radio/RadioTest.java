@@ -12,10 +12,10 @@ public class RadioTest {
     @CsvFileSource(files = "src/test/resources/testUpperLimitNumberRadio")
     void upperLimitNumberRadio(int numberRadio, int expected) {
         Radio testRadio = new Radio();
-        testRadio.numberRadio = numberRadio;
+        testRadio.setNumberRadio(numberRadio);
 
         testRadio.next();
-        int actual = testRadio.numberRadio;
+        int actual = testRadio.getNumberRadio();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -25,10 +25,10 @@ public class RadioTest {
     @CsvFileSource(files = "src/test/resources/testUnderLimitNumberRadio")
     void underLimitNumberRadio(int numberRadio, int expected) {
         Radio testRadio = new Radio();
-        testRadio.numberRadio = numberRadio;
+        testRadio.setNumberRadio(numberRadio);
 
         testRadio.prev();
-        int actual = testRadio.numberRadio;
+        int actual = testRadio.getNumberRadio();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -41,7 +41,7 @@ public class RadioTest {
         testRadio.setNumberRadio(5); //предварительная настройка станции
 
         testRadio.setNumberRadio(numberRadio);
-        int actual = testRadio.numberRadio;
+        int actual = testRadio.getNumberRadio();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -51,10 +51,10 @@ public class RadioTest {
     @CsvFileSource(files = "src/test/resources/testUpperLimitVolumeRadio")
     void upperLimitVolume(int volume, int expected) {
         Radio testRadio = new Radio();
-        testRadio.volumeRadio = volume;
+        testRadio.setVolumeRadio(volume);
 
         testRadio.upVolume();
-        int actual = testRadio.volumeRadio;
+        int actual = testRadio.getVolumeRadio();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -64,10 +64,23 @@ public class RadioTest {
     @CsvFileSource(files = "src/test/resources/testUnderLimitVolumeRadio")
     void underLimitVolume(int volume, int expected) {
         Radio testRadio = new Radio();
-        testRadio.volumeRadio = volume;
+        testRadio.setVolumeRadio(volume);
 
         testRadio.downVolume();
-        int actual = testRadio.volumeRadio;
+        int actual = testRadio.getVolumeRadio();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    //прямое указание громкости станции
+    @ParameterizedTest
+    @CsvFileSource(files = "src/test/resources/testSetVolumeRadio")
+    void testSetVolumeRadio(int volumeRadio, int expected) {
+        Radio testRadio = new Radio();
+        testRadio.setVolumeRadio(5); //предварительная настройка громкости
+
+        testRadio.setVolumeRadio(volumeRadio);
+        int actual = testRadio.getVolumeRadio();
 
         Assertions.assertEquals(expected, actual);
     }

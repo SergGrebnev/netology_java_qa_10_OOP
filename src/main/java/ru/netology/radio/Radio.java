@@ -1,13 +1,20 @@
 package ru.netology.radio;
 
 public class Radio {
-    int numberRadio; //текущий номер станции
-    int volumeRadio; //текущая громкость
+    private int numberRadio; //текущий номер станции
+    private int volumeRadio; //текущая громкость
     private int minNumberRadio = 0; //минимальный номер станции
     private int maxNumberRadio = 9; //максимальный номер станции
     private int minVolumeRadio = 0; //минимально возможная громкость
     private int maxVolumeRadio = 100; //максимально возможная громкость
 
+    public int getNumberRadio() {
+        return numberRadio;
+    }
+
+    public int getVolumeRadio() {
+        return volumeRadio;
+    }
 
     public void next() { //переключение на следующую станцию
         if (numberRadio >= maxNumberRadio) {
@@ -26,7 +33,15 @@ public class Radio {
     }
 
     public void setNumberRadio(int setNumber) {
-        if (setNumber >= minNumberRadio && setNumber <= maxNumberRadio) numberRadio = setNumber;
+        if (setNumber >= minNumberRadio && setNumber <= maxNumberRadio) {
+            numberRadio = setNumber;
+        }
+    }
+
+    public void setVolumeRadio(int setVolume) {
+        if (setVolume >= minVolumeRadio && setVolume <= maxVolumeRadio) {
+            volumeRadio = setVolume;
+        }
     }
 
 
