@@ -85,4 +85,43 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    //установка кол-ва станций и переход верхней границы номеров станций
+    @ParameterizedTest
+    @CsvFileSource(files = "src/test/resources/testUpperNewLimitNumberRadio")
+    void upperNewLimitNumberRadio(int numberOfStations, int numberRadio, int expected) {
+        Radio testRadio = new Radio(numberOfStations);
+        testRadio.setNumberRadio(numberRadio);
+
+        testRadio.next();
+        int actual = testRadio.getNumberRadio();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    //установка кол-ва станций и переход нижней границы номеров станций
+    @ParameterizedTest
+    @CsvFileSource(files = "src/test/resources/testUnderNewLimitNumberRadio")
+    void underNewLimitNumberRadio(int numberOfStations, int numberRadio, int expected) {
+        Radio testRadio = new Radio(numberOfStations);
+        testRadio.setNumberRadio(numberRadio);
+
+        testRadio.prev();
+        int actual = testRadio.getNumberRadio();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    //установка кол-ва станций и прямое указание номера станции
+    @ParameterizedTest
+    @CsvFileSource(files = "src/test/resources/testNewLimitSetNumberRadio")
+    void testNewLimitSetNumberRadio(int numberOfStations, int numberRadio, int expected) {
+        Radio testRadio = new Radio(numberOfStations);
+        testRadio.setNumberRadio(5); //предварительная настройка станции
+
+        testRadio.setNumberRadio(numberRadio);
+        int actual = testRadio.getNumberRadio();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
 }
