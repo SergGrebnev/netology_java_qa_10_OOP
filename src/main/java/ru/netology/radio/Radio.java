@@ -1,5 +1,14 @@
 package ru.netology.radio;
 
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+
 public class Radio {
     private int numberRadio; //текущий номер станции
     private int volumeRadio; //текущая громкость
@@ -9,8 +18,6 @@ public class Radio {
     private int minVolumeRadio = 0; //минимально возможная громкость
     private int maxVolumeRadio = 100; //максимально возможная громкость
 
-    public Radio() {
-    }
 
     public Radio(int numberOfStations) {
         if (numberOfStations > 0) {
@@ -19,13 +26,6 @@ public class Radio {
         }
     }
 
-    public int getNumberRadio() {
-        return numberRadio;
-    }
-
-    public int getVolumeRadio() {
-        return volumeRadio;
-    }
 
     public void next() { //переключение на следующую станцию
         if (numberRadio >= maxNumberRadio) {
